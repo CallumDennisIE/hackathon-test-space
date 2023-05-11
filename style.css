@@ -1,0 +1,38 @@
+body {
+    cursor: url(crosshair-small.png), auto;
+    margin: 0px;
+}
+
+#gameArea {
+    height: 100vh;
+}
+
+.stormtrooper {
+    position: fixed;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    top: 100px;
+    left: 0;
+}
+
+.supply-crate {
+    position: fixed;
+    top: 80px;
+    left: 0;
+}
+
+@keyframes example {
+    0% {
+        top: 100px;
+        left: 0;
+    }
+
+    50% {
+        left: 200px;
+    }
+
+    100% {
+        left: 0px;
+    }
+}
