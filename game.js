@@ -1,38 +1,37 @@
 const game = document.getElementById('gameArea');
-const targets = Array.from(document.getElementsByClassName('stormtrooper'));
-const scoreArea = document.getElementById('scoreArea');
-const maxAmmoArea = document.getElementById('maxAmmoArea');
-const currentAmmoArea = document.getElementById('currentAmmoArea');
 
-score = 0;
-scoreArea.innerHTML = score;
+createEnemy('center', 'slideLeft', '800', 'px');
 
-maxAmmo = 6;
-currentAmmo = 6;
-maxAmmoArea.innerHTML = maxAmmo;
-currentAmmoArea.innerHTML = currentAmmo;
+function createEnemy(position, moveDirection, size, units) {
+    enemyContainer = document.createElement('div');
+    enemyContainer.classList.add('enemyContainer');
+    enemyContainer.classList.add(position);
+    game.appendChild(enemyContainer);
 
-targets.forEach(target => {
-    target.addEventListener('click', function handleClick(event) {
-        if (currentAmmo > 0) {
-            target.setAttribute('style', 'display: none;');
-            score += 10;
+    enemy = document.createElement('span');
+    enemy.classList.add('enemy');
+    enemy.classList.add('animate');
+    enemyContainer.appendChild(enemy);
 
-            scoreArea.innerHTML = score;
-        }
+    enemySprite = document.createElement('img');
+    enemySprite.setAttribute('src', 'StormTrooper.webp');
+    enemy.appendChild(enemySprite);
 
-    });
-});
+    cover = document.createElement('span');
+    cover.classList.add('cover');
+    enemyContainer.appendChild(cover);
 
-game.addEventListener('click', function playSound(event) {
-    if (currentAmmo > 0) {
-        var audio = new Audio('Single_blaster_shot.mp3');
-        audio.play();
-        currentAmmo -= 1;
-        currentAmmoArea.innerHTML = currentAmmo;
+    coverSprite = document.createElement('img');
+    coverSprite.setAttribute('src', 'rebel_supply_crate.webp');
+    cover.appendChild(coverSprite);
+
+
+    if (moveDirection == 'slideRight') {
+        movement = size;
     } else {
-        var audio_out = new Audio('ammo-out.mp3');
-        audio_out.play();
+        movement = size * -1;
     }
 
-});
+    document.documentElement.style.setProperty('--movement', movement.toString() + units);
+    document.documentElement.style.setProperty('--size', size.toString() + units);
+}

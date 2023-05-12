@@ -1,38 +1,53 @@
-body {
-    cursor: url(crosshair-small.png), auto;
-    margin: 0px;
+:root {
+    --size: 200px;
+    --movement: 200px;
 }
 
 #gameArea {
     height: 100vh;
 }
 
-.stormtrooper {
-    position: fixed;
-    animation-name: example;
+.enemy {
+    z-index: 1;
+    position: relative;
+}
+
+.enemy img {
+    width: var(--size);
+}
+
+.cover {
+    z-index: 2;
+    position: relative;
+    right: var(--size);
+}
+
+.cover img {
+    width: var(--size);
+}
+
+.animate {
+    animation-name: moveAnimation;
     animation-duration: 4s;
     animation-iteration-count: infinite;
-    top: 100px;
-    left: 0;
 }
 
-.supply-crate {
+.center {
     position: fixed;
-    top: 80px;
-    left: 0;
+    top: 50%;
+    left: 50%;
 }
 
-@keyframes example {
+@keyframes moveAnimation {
     0% {
-        top: 100px;
         left: 0;
     }
 
     50% {
-        left: 200px;
+        left: var(--movement);
     }
 
     100% {
-        left: 0px;
+        left: 0;
     }
 }
