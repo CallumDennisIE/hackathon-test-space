@@ -1,8 +1,3 @@
-:root {
-    --size: 200px;
-    --movement: 200px;
-}
-
 #gameArea {
     height: 100vh;
 }
@@ -12,24 +7,22 @@
     position: relative;
 }
 
-.enemy img {
-    width: var(--size);
-}
-
 .cover {
     z-index: 2;
     position: relative;
-    right: var(--size);
-}
-
-.cover img {
-    width: var(--size);
 }
 
 .animate {
-    animation-name: moveAnimation;
     animation-duration: 4s;
     animation-iteration-count: infinite;
+}
+
+.moveLeft {
+    animation-name: moveLeft;
+}
+
+.moveRight {
+    animation-name: moveRight;
 }
 
 .center {
@@ -38,13 +31,95 @@
     left: 50%;
 }
 
-@keyframes moveAnimation {
+.left {
+    position: fixed;
+    top: 50%;
+    left: 25%;
+}
+
+.right {
+    position: fixed;
+    top: 50%;
+    left: 75%;
+}
+
+@keyframes moveSmlRight {
     0% {
         left: 0;
     }
 
     50% {
-        left: var(--movement);
+        left: 100px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes moveSmlLeft {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: -100px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes moveMedRight {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 200px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes moveMedLeft {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: -200px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes moveBigRight {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 300px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes moveBigLeft {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: -300px;
     }
 
     100% {
